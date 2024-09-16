@@ -9,7 +9,7 @@ let listings = [
     },
     {
         name: 'Bob',
-        occupation: 'Teacer',
+        occupation: 'Teacher',
         startingPrice: 50,
     },
     {
