@@ -14,5 +14,6 @@ body {
 
 th,
 td {
+    text-align: left;
     padding: 1rem;
 }
