@@ -18,7 +18,25 @@ let listings = [
         startingPrice: 70,
     },
 ];
-let aveStartingPrice = listings.reduce((total, listing) => total += listing.startingPrice, 0) / listings.length;
+let aveStartingPrice = calculateAveStartingPrice();
+
+const names = ['Annabeth', 'Troy', 'Brooke', 'Toby'];
+const occupations = ['Clerk', 'Chef', 'Content Creator', 'UX Designer'];
+const startingPrices = [30, 50, 70, 75, 90, 100, 120];
+
+function addListing() {
+    const name = names[Math.floor(Math.random() * names.length)];
+    const occupation = occupations[Math.floor(Math.random() * occupations.length)];
+    const startingPrice = startingPrices[Math.floor(Math.random() * startingPrices.length)];
+    listings.push({ name, occupation, startingPrice });
+
+    aveStartingPrice = calculateAveStartingPrice();
+}
+
+function calculateAveStartingPrice() {
+    const ave = listings.reduce((total, listing) => total += listing.startingPrice, 0) / listings.length;
+    return Math.round(ave * 100) / 100;
+}
 
 // #region Render
 function render() {
@@ -52,5 +70,11 @@ function render() {
     })
     $table.append(...$tableContent);
 }
+
+// #region Script
+const intervalId = setInterval(() => {
+    addListing();
+    render();
+}, 5000)
 
 render();
