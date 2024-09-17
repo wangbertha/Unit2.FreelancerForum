@@ -1,5 +1,4 @@
 // #region State
-let listingPropertyLabels = ['Name', 'Occupation', 'Starting Price'];
 let listingPropertyCodes = ['name', 'occupation', 'startingPrice'];
 let listings = [
     {
@@ -20,14 +19,14 @@ let listings = [
 ];
 let aveStartingPrice = calculateAveStartingPrice();
 
-const names = ['Annabeth', 'Troy', 'Brooke', 'Toby'];
-const occupations = ['Clerk', 'Chef', 'Content Creator', 'UX Designer'];
-const startingPrices = [30, 50, 70, 75, 90, 100, 120];
+const NAMES = ['Annabeth', 'Troy', 'Brooke', 'Toby'];
+const OCCUPATIONS = ['Clerk', 'Chef', 'Content Creator', 'UX Designer'];
+const STARTING_PRICES = [30, 50, 70, 75, 90, 100, 120];
 
 function addListing() {
-    const name = names[Math.floor(Math.random() * names.length)];
-    const occupation = occupations[Math.floor(Math.random() * occupations.length)];
-    const startingPrice = startingPrices[Math.floor(Math.random() * startingPrices.length)];
+    const name = NAMES[Math.floor(Math.random() * NAMES.length)];
+    const occupation = OCCUPATIONS[Math.floor(Math.random() * OCCUPATIONS.length)];
+    const startingPrice = STARTING_PRICES[Math.floor(Math.random() * STARTING_PRICES.length)];
     listings.push({ name, occupation, startingPrice });
 
     aveStartingPrice = calculateAveStartingPrice();
@@ -45,17 +44,7 @@ function render() {
     $aveStartingPrice.textContent = `The average starting price is $${aveStartingPrice}.`
 
     // Render table
-    const $table = document.querySelector('#freelancer-listings');
-
-    // Render table header row
-    const $headerRow = document.createElement('tr');
-    const $headerNames = listingPropertyLabels.map((propertyName) => {
-        const $headerName = document.createElement('th');
-        $headerName.textContent = propertyName;
-        return $headerName;
-    })
-    $headerRow.replaceChildren(...$headerNames);
-    $table.replaceChildren($headerRow);
+    const $tableBody = document.querySelector('#freelancer-listings');
 
     // Render listing rows
     const $tableContent = listings.map((listing) => {
@@ -68,7 +57,7 @@ function render() {
         $row.replaceChildren(...$rowContent);
         return $row;
     })
-    $table.append(...$tableContent);
+    $tableBody.replaceChildren(...$tableContent);
 }
 
 // #region Script
