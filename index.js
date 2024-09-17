@@ -1,5 +1,4 @@
 // #region State
-let listingPropertyLabels = ['Name', 'Occupation', 'Starting Price'];
 let listingPropertyCodes = ['name', 'occupation', 'startingPrice'];
 let listings = [
     {
@@ -45,17 +44,7 @@ function render() {
     $aveStartingPrice.textContent = `The average starting price is $${aveStartingPrice}.`
 
     // Render table
-    const $table = document.querySelector('#freelancer-listings');
-
-    // Render table header row
-    const $headerRow = document.createElement('tr');
-    const $headerNames = listingPropertyLabels.map((propertyName) => {
-        const $headerName = document.createElement('th');
-        $headerName.textContent = propertyName;
-        return $headerName;
-    })
-    $headerRow.replaceChildren(...$headerNames);
-    $table.replaceChildren($headerRow);
+    const $tableBody = document.querySelector('#freelancer-listings');
 
     // Render listing rows
     const $tableContent = listings.map((listing) => {
@@ -68,7 +57,7 @@ function render() {
         $row.replaceChildren(...$rowContent);
         return $row;
     })
-    $table.append(...$tableContent);
+    $tableBody.replaceChildren(...$tableContent);
 }
 
 // #region Script

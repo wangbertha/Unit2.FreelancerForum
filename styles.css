@@ -12,6 +12,11 @@ body {
     gap: 1rem;
 }
 
+caption {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
 th,
 td {
     text-align: left;
